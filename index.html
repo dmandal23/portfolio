@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- style css link -->
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>
+
+
+    <!------------------------Heading section----------------------------->
+    <div id="header">
+
+        <div class="container">
+            <nav>
+               
+                <h1 class="logo">   MyPortfolio</h1>
+                <ul id ="sidemenu">
+                    <li><a href="#header">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#services">SERVICES</a></li>
+                    <li><a href="#portfolio">PORTFOLIO</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+
+            </nav>
+
+            <div class="header-text">
+              
+                        <p>Web Developer</p>
+                        <h1>Hi I am <span>Deepak</span><br>Mandal from Nepal</h1><br>
+                        <button class="herobtn">Read More</button>
+           
+
+        
+            </div>
+        </div>
+    </div>
+    
+
+    <!-------------------------About section------------------------------------>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/myprofile.jpg">
+                    <h3>Deepak Mnadal</h3>
+                </div>
+                <div class="about-col-2">
+                    <h1 class="subtitle">About Me</h1><br>
+                    <p>I am a web developer. I have created many web applications or apps and have been working in this field for the last four years.
+                         I have studied computer science and have been doing main web development ever since I completed my studies.
+                         I have created many apps in my life for myself and also for clients. I have also developed my experience skills 
+                         in the last 4 years. If you also want to create any kind of app and web development.
+                          web design then contact me. I will give you the best price. I will provide you my service</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Web/Disign</span><br>Developer web/FrontEnd Interface</li>
+                            <li><span>Web/Develope</span><br>Developer web/Backend Interface</li>
+                            <li><span>Web/App Development</span><br>Developer web/App Interface</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>Development</span><br>Developer web/FrontEnd Interface</li>
+                            <li><span>Designing</span><br>Developer web/Backend Interface</li>
+                            <li><span>Application Development</span><br>Developer web/App Interface</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2013</span><br>RJS+2 Graduates Students </li>
+                            <li><span>2016</span><br>Bachelor of Engineering</li>
+                            <li><span>2020</span><br>Some Training Institute In Computer Science</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ----------------------------Services section---------------------------------------->
+
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Web Design</h2>
+                    <p> In front end development, we can create better designs for you like e-commerce website,
+                        blog website, news portal and other types of designs and provide them at affordable prices
+                        and contact me If you want to hire me then apply on the contact form given below.</p>
+                    <a href="#">Learn More</a>
+                </div>
+
+
+                <div>
+                    <i class="fa-solid fa-crop"></i>
+                    <h2>Web/App BackEnd</h2>
+                    <p> For backend development, we will work as per your requirementlike data is required 
+                        in the database and also for updating, deleting the same data & Will give you
+                         fully customized login system and authentication in admin dashboard.
+                        If you want to hire me then apply on the contact form given below.</p>
+                    <a href="#">Learn More</a>
+                </div>
+
+
+                <div>
+                    <i class="fa-brands fa-app-store-ios"></i>
+                    <h2>Javascript Project</h2>
+                    <p>Javacsript functionality or project in
+                        their website because this JavaScript function allows your website to function in a unique way.
+                        We will include the function of JavaScript in your website for you and if you want a project on
+                        JavaScript, there is a billing system and many more, I am here for that also</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------------------------------Portfolio-------------------------------------------->
+
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">My Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/mywork1.jpg">
+
+                    <div class="layer">
+                        <h3>Web Design</h3>
+                        <p>If you want any kind of website design then contact me, I will design it as per your requirement..</p>
+                        <a href="#"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+
+
+
+                </div>
+
+                <div class="work">
+                    <img src="images/mywork2.jpg">
+
+                    <div class="layer">
+                        <h3>Online Shopping App</h3>
+                        <p>You can also contact me for online shopping, I will create a fully customized web app.</p>
+                        <a href="#"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="work">
+                    <img src="images/mywork3.jpg">
+
+                    <div class="layer">
+                        <h3>E-Commerce Website</h3>
+                        <p>If you want to create an ecommerce website, we will also provide service. Contact me.</p>
+                        <a href="#"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="#portfolio" class="btn">See More</a>
+        </div>
+    </div>
+
+
+    <!----------------------Contact Form-------------------------------------------->
+
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fa-solid fa-envelope"></i>Mandalkdee@gmail.com</p>
+                    <p><i class="fa-solid fa-phone-volume"></i>+9779800804970</p>
+                    <div class="social-icons">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <!-- <a href="images/my-cv.html" download class="btn btn2">Download Cv</a> -->
+                </div>
+
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="name" id="contact-name" onkeyup="validateName()" placeholder="Your Name" required>
+                        <span id="name-error"></span>
+                        <input type="email" name="email" id="contact-email" onkeyup="validateEmail()" placeholder="Your Email" required>
+                        <span id="email-error"></span>
+                        <textarea name="message" rows="6" id = "contact-message" onkeyup="validateMessage()" placeholder="Your Message" required></textarea>
+                        <span id="message-error"></span>
+                        <button type="submit" onclick="return validateForm()" class="btn btn2">Submit</button>
+                        <span id="submit-error"></span>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+
+
+            <!--------------------------- Footer----------------------------------------- -->
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="copyright">
+        <p>Copyright@ Deepak. Portfolio website</i></p>
+
+
+
+
+
+
+<script src="script.js"></script>
+</body>
+<!-- Font awesome cdn -->
+<script src="https://kit.fontawesome.com/b1b63c5e2b.js" crossorigin="anonymous"></script>
+
+
+</html>
