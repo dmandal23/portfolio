@@ -5,238 +5,1269 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <!-- style css link -->
-    <link rel="stylesheet" href="style.css">
+    <title>Deepak Mandal | Portfolio</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
 
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            color: var(--secondary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header Styles */
+        #header {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80') no-repeat center center/cover;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            position: fixed;
+            width: 90%;
+            max-width: 1200px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(44, 62, 80, 0.9);
+            padding: 15px 0;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .menu-btn, .close-btn {
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            display: none;
+        }
+
+        .header-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 80px;
+            max-width: 800px;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            animation: fadeInUp 1s ease;
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .header-content h1 span {
+            color: var(--primary-color);
+        }
+
+        .header-content .btn {
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .social-icons {
+            position: absolute;
+            left: 30px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        #about {
+            background: white;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.03);
+        }
+
+        .about-img h3 {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 1.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .skills-tabs {
+            margin-top: 30px;
+        }
+
+        .tab-btns {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-light);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+
+        .tab-btn.active::after {
+            width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 15px;
+        }
+
+        .skills-list li span {
+            display: block;
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            position: relative;
+            transition: width 1.5s ease;
+        }
+
+        .skill-progress::after {
+            content: attr(data-progress);
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 0.7rem;
+        }
+
+        /* Services Section */
+        #services {
+            background: #f1f5f9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(52, 152, 219, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .portfolio-overlay a {
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .view-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-details p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .contact-details i {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .contact-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .contact-social a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .form-submit:hover {
+            background: var(--secondary-color);
+        }
+
+        .error-message {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: var(--box-shadow);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-content h1 {
+                font-size: 3rem;
+            }
+
+            .about-container {
+                flex-direction: column;
+            }
+
+            .about-img {
+                max-width: 500px;
+                margin: 0 auto 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-content p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .menu-btn, .close-btn {
+                display: block;
+                z-index: 1000;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 25px;
+                right: 25px;
+            }
+
+            .social-icons {
+                left: 15px;
+                bottom: 15px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-
-    <!------------------------Heading section----------------------------->
-    <div id="header">
+    <!-- Header Section -->
+    <header id="header">
+        <nav id="navbar">
+            <a href="#" class="logo">Port<span>folio</span></a>
+            <ul class="nav-links">
+                <li><a href="#header" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <i class="fas fa-bars menu-btn"></i>
+            <i class="fas fa-times close-btn"></i>
+        </nav>
 
         <div class="container">
-            <nav>
-               
-                <h1 class="logo">   MyPortfolio</h1>
-                <ul id ="sidemenu">
-                    <li><a href="#header">HOME</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#services">SERVICES</a></li>
-                    <li><a href="#portfolio">PORTFOLIO</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
-                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
-                </ul>
-                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
-
-            </nav>
-
-            <div class="header-text">
-              
-                        <p>Web Developer</p>
-                        <h1>Hi I am <span>Deepak</span><br>Mandal from Nepal</h1><br>
-                      <a href="#about" class="herobtn">Read More</a>
-           
-
-        
+            <div class="header-content">
+                <p data-aos="fade-up">Web Developer</p>
+                <h1 data-aos="fade-up" data-aos-delay="100">Hi, I'm <span>Deepak Mandal</span><br>from Nepal</h1>
+                <a href="#about" class="btn" data-aos="fade-up" data-aos-delay="200">Explore My Work</a>
             </div>
         </div>
-    </div>
-    
 
-    <!-------------------------About section------------------------------------>
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="images/profile.jpg">
-                    <h3>Deepak Mnadal</h3>
-                </div>
-                <div class="about-col-2">
-                    <h1 class="subtitle">About Me</h1><br>
-                    <p>I am a web developer. I have created many web applications or apps and have been working in this field for the last four years.
-                         I have studied computer science and have been doing main web development ever since I completed my studies.
-                         I have created many apps in my life for myself and also for clients. I have also developed my experience skills 
-                         in the last 4 years. If you also want to create any kind of app and web development.
-                          web design then contact me. I will give you the best price. I will provide you my service</p>
-
-                    <div class="tab-titles">
-                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                        <p class="tab-links" onclick="opentab('education')">Education</p>
-                    </div>
-                    <div class="tab-contents active-tab" id="skills">
-                        <ul>
-                            <li><span>Web/Disign</span><br>Developer web/FrontEnd Interface</li>
-                            <li><span>Web/Develope</span><br>Developer web/Backend Interface</li>
-                            <li><span>Web/App Development</span><br>Developer web/App Interface</li>
-                        </ul>
-                    </div>
-
-                    <div class="tab-contents" id="experience">
-                        <ul>
-                            <li><span>Development</span><br>Developer web/FrontEnd Interface</li>
-                            <li><span>Designing</span><br>Developer web/Backend Interface</li>
-                            <li><span>Application Development</span><br>Developer web/App Interface</li>
-                        </ul>
-                    </div>
-
-                    <div class="tab-contents" id="education">
-                        <ul>
-                            <li><span>2013</span><br>RJS+2 Graduates Students </li>
-                            <li><span>2016</span><br>Bachelor of Engineering</li>
-                            <li><span>2020</span><br>Some Training Institute In Computer Science</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="social-icons">
+            <a href="#" data-aos="fade-up" data-aos-delay="300"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" data-aos="fade-up" data-aos-delay="400"><i class="fab fa-twitter"></i></a>
+            <a href="#" data-aos="fade-up" data-aos-delay="500"><i class="fab fa-instagram"></i></a>
+            <a href="#" data-aos="fade-up" data-aos-delay="600"><i class="fab fa-linkedin-in"></i></a>
         </div>
-    </div>
+    </header>
 
-    <!-- ----------------------------Services section---------------------------------------->
-
-    <div id="services">
+    <!-- About Section -->
+    <section id="about">
         <div class="container">
-            <h1 class="sub-title">My Services</h1>
-            <div class="services-list">
-
-                <div>
-                    <i class="fa-solid fa-code"></i>
-                    <h2>Web Design</h2>
-                    <p> In front end development, we can create better designs for you like e-commerce website,
-                        blog website, news portal and other types of designs and provide them at affordable prices
-                        and contact me If you want to hire me then apply on the contact form given below.</p>
-                    <a href="#">Learn More</a>
+            <h2 class="section-title" data-aos="fade-up">About Me</h2>
+            <div class="about-container">
+                <div class="about-img" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Deepak Mandal">
+                    <h3>Deepak Mandal</h3>
                 </div>
-
-
-                <div>
-                    <i class="fa-solid fa-crop"></i>
-                    <h2>Web/App BackEnd</h2>
-                    <p> For backend development, we will work as per your requirementlike data is required 
-                        in the database and also for updating, deleting the same data & Will give you
-                         fully customized login system and authentication in admin dashboard.
-                        If you want to hire me then apply on the contact form given below.</p>
-                    <a href="#">Learn More</a>
-                </div>
-
-
-                <div>
-                    <i class="fa-brands fa-app-store-ios"></i>
-                    <h2>Javascript Project</h2>
-                    <p>Javacsript functionality or project in
-                        their website because this JavaScript function allows your website to function in a unique way.
-                        We will include the function of JavaScript in your website for you and if you want a project on
-                        JavaScript, there is a billing system and many more, I am here for that also</p>
-                    <a href="#">Learn More</a>
+                <div class="about-content" data-aos="fade-left">
+                    <p>I am a passionate web developer with 4+ years of experience creating modern, responsive websites and web applications. I specialize in both front-end and back-end development, delivering high-quality solutions tailored to client needs.</p>
+                    <p>Since completing my studies in Computer Science, I've dedicated myself to web development, building numerous applications for clients across various industries. My approach combines technical expertise with creative problem-solving to deliver exceptional results.</p>
+                    
+                    <div class="skills-tabs">
+                        <div class="tab-btns">
+                            <button class="tab-btn active" data-tab="skills">Skills</button>
+                            <button class="tab-btn" data-tab="experience">Experience</button>
+                            <button class="tab-btn" data-tab="education">Education</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="skills">
+                            <ul class="skills-list">
+                                <li>
+                                    <span>Frontend Development</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-progress="95%" style="width: 95%"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>Backend Development</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-progress="85%" style="width: 85%"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>JavaScript</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-progress="90%" style="width: 90%"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tab-content" id="experience">
+                            <ul class="skills-list">
+                                <li>
+                                    <span>2020 - Present</span>
+                                    <p>Senior Web Developer at Tech Solutions Nepal</p>
+                                </li>
+                                <li>
+                                    <span>2018 - 2020</span>
+                                    <p>Junior Developer at Web Creations</p>
+                                </li>
+                                <li>
+                                    <span>2016 - 2018</span>
+                                    <p>Freelance Web Developer</p>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tab-content" id="education">
+                            <ul class="skills-list">
+                                <li>
+                                    <span>2020</span>
+                                    <p>Advanced Diploma in Web Development</p>
+                                </li>
+                                <li>
+                                    <span>2016</span>
+                                    <p>Bachelor of Engineering in Computer Science</p>
+                                </li>
+                                <li>
+                                    <span>2013</span>
+                                    <p>RJS +2 Graduate</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!---------------------------------Portfolio-------------------------------------------->
-
-    <div id="portfolio">
+    <!-- Services Section -->
+    <section id="services">
         <div class="container">
-            <h1 class="sub-title">My Work</h1>
-            <div class="work-list">
-                <div class="work">
-                    <img src="images/mywork1.jpg">
-
-                    <div class="layer">
-                        <h3>Web Design</h3>
-                        <p>If you want any kind of website design then contact me, I will design it as per your requirement..</p>
-                        <a href="#"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
+            <h2 class="section-title" data-aos="fade-up">My Services</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
                     </div>
-
-
-
+                    <h3>Web Design</h3>
+                    <p>Custom, responsive website designs that look great on all devices. From e-commerce to blogs, I create visually appealing interfaces with optimal user experience.</p>
+                    <a href="#" class="btn">Learn More</a>
                 </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend Development</h3>
+                    <p>Robust backend solutions with database management, API integration, and secure authentication systems tailored to your specific requirements.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>JavaScript Applications</h3>
+                    <p>Interactive web applications with modern JavaScript frameworks. From simple functionality to complex systems, I bring dynamic behavior to your projects.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="work">
-                    <img src="images/mywork2.jpg">
-
-                    <div class="layer">
-                        <h3>Online Shopping App</h3>
-                        <p>You can also contact me for online shopping, I will create a fully customized web app.</p>
-                        <a href="#"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">My Work</h2>
+            
+            <div class="portfolio-filter" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="app">Applications</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" alt="Web Design Project" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Creative Agency Website</h3>
+                        <p>Modern design with smooth animations and responsive layout</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
-
-                <div class="work">
-                    <img src="images/mywork3.jpg">
-
-                    <div class="layer">
-                        <h3>E-Commerce Website</h3>
-                        <p>If you want to create an ecommerce website, we will also provide service. Contact me.</p>
-                        <a href="#"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
+                
+                <div class="portfolio-item" data-category="app" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="App Project" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Task Management App</h3>
+                        <p>JavaScript application with local storage functionality</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="ecommerce" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-commerce Project" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Fashion Store</h3>
+                        <p>Complete e-commerce solution with payment integration</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
             </div>
-            <a href="#portfolio" class="btn">See More</a>
+            
+            <div class="view-more" data-aos="fade-up">
+                <a href="#" class="btn">View More Projects</a>
+            </div>
         </div>
-    </div>
+    </section>
 
-
-    <!----------------------Contact Form-------------------------------------------->
-
-    <div id="contact">
+    <!-- Contact Section -->
+    <section id="contact">
         <div class="container">
-            <div class="row">
-                <div class="contact-left">
-                    <h1 class="sub-title">Contact Me</h1>
-                    <p><i class="fa-solid fa-envelope"></i>Mandalkdee@gmail.com</p>
-                    <p><i class="fa-solid fa-phone-volume"></i>+9779800804970</p>
-                    <div class="social-icons">
-                        <a href=""><i class="fa-brands fa-facebook"></i></a>
-                        <a href=""><i class="fa-brands fa-twitter"></i></a>
-                        <a href=""><i class="fa-brands fa-instagram"></i></a>
-                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-details">
+                        <p><i class="fas fa-envelope"></i> Mandalkdee@gmail.com</p>
+                        <p><i class="fas fa-phone-alt"></i> +977 9800804970</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
                     </div>
-                    <!-- <a href="images/my-cv.html" download class="btn btn2">Download Cv</a> -->
+                    
+                    <div class="contact-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
-
-                <div class="contact-right">
-                    <form name="submit-to-google-sheet">
-                        <input type="text" name="Name" id="contact-name" onkeyup="validateName()" placeholder="Your Name" required>
-                        <span id="name-error"></span>
-                        <input type="email" name="Email" id="contact-email" onkeyup="validateEmail()" placeholder="Your Email" required>
-                        <span id="email-error"></span>
-                        <textarea name="Message" rows="6" id = "contact-message" onkeyup="validateMessage()" placeholder="Your Message" required></textarea>
-                        <span id="message-error"></span>
-                        <button type="submit" onclick="return validateForm()" class="btn btn2">Submit</button>
-                        <span id="submit-error"></span>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <div id="nameError" class="error-message">Please enter your name</div>
+                        
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        <div id="emailError" class="error-message">Please enter a valid email</div>
+                        
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        <div id="messageError" class="error-message">Please enter your message</div>
+                        
+                        <button type="submit" class="form-submit">Send Message</button>
                     </form>
-                    <span id="msg"></span>
+                    <div id="formSuccess" style="display: none; margin-top: 20px; color: var(--primary-color);">
+                        Thank you! Your message has been sent successfully.
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-
-            <!--------------------------- Footer----------------------------------------- -->
-
-
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 Deepak Mandal. All Rights Reserved.</p>
+                <p>Designed & Developed with ❤️ by Deepak Mandal</p>
             </div>
         </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
     </div>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
 
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const closeBtn = document.querySelector('.close-btn');
+        const navLinks = document.querySelector('.nav-links');
 
-    <div class="copyright">
-        <p>Copyright@ Deepak. Portfolio website</i></p>
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.add('active');
+        });
 
+        closeBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
 
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
 
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
 
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
 
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
-<script src="script.js"></script>
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Portfolio filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Form validation
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const messageError = document.getElementById('messageError');
+        const formSuccess = document.getElementById('formSuccess');
+
+        function validateName() {
+            if (nameInput.value.trim() === '') {
+                nameError.style.display = 'block';
+                return false;
+            } else {
+                nameError.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                emailError.style.display = 'block';
+                return false;
+            } else {
+                emailError.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validateMessage() {
+            if (messageInput.value.trim() === '') {
+                messageError.style.display = 'block';
+                return false;
+            } else {
+                messageError.style.display = 'none';
+                return true;
+            }
+        }
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isMessageValid = validateMessage();
+            
+            if (isNameValid && isEmailValid && isMessageValid) {
+                // Here you would typically send the form data to a server
+                // For demo purposes, we'll just show a success message
+                contactForm.style.display = 'none';
+                formSuccess.style.display = 'block';
+                
+                // Reset form after 3 seconds
+                setTimeout(() => {
+                    contactForm.reset();
+                    contactForm.style.display = 'block';
+                    formSuccess.style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        // Input field validation on blur
+        nameInput.addEventListener('blur', validateName);
+        emailInput.addEventListener('blur', validateEmail);
+        messageInput.addEventListener('blur', validateMessage);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Set active nav link based on scroll position
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Animate skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-progress');
+
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const progress = bar.getAttribute('data-progress');
+                bar.style.width = progress;
+            });
+        }
+
+        // Run once on page load if skills section is visible
+        if (window.innerHeight > document.getElementById('about').getBoundingClientRect().top) {
+            animateSkillBars();
+        }
+
+        // Animate when scrolling to skills section
+        window.addEventListener('scroll', () => {
+            const aboutSection = document.getElementById('about');
+            const aboutSectionTop = aboutSection.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (aboutSectionTop < windowHeight - 100) {
+                animateSkillBars();
+            }
+        });
+    </script>
 </body>
-<!-- Font awesome cdn -->
-<script src="https://kit.fontawesome.com/b1b63c5e2b.js" crossorigin="anonymous"></script>
-
-
 </html>
